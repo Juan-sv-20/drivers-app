@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Bar @createNewGroup="AddGroups"> </Bar>
+    <br />
+    <Groups v-for="group in groups" :key="group"> </Groups>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Bar from "@/components/Tools-bar.vue";
+import Groups from "@/components/Group-bar.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      groups: 0,
+    };
+  },
   components: {
-    HelloWorld,
+    Bar,
+    Groups,
+  },
+  methods: {
+    AddGroups(value) {
+      this.groups += value;
+    },
   },
 };
 </script>
